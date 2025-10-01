@@ -1,0 +1,128 @@
+/* Define a paleta de cores Neon */
+:root {
+    --cor-fundo: #0d1117;
+    --cor-arena: #161b22;
+    --cor-principal: #58a6ff; /* Azul Neon */
+    --cor-texto: #c9d1d9;
+    --cor-brilho: rgba(88, 166, 255, 0.5);
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 400px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--cor-principal);
+}
+
+#game-canvas {
+    background-color: var(--cor-arena);
+    border: 3px solid var(--cor-principal);
+    border-radius: 8px;
+    /* O EFEITO NEON! */
+    box-shadow: 0 0 15px var(--cor-brilho), 0 0 25px var(--cor-brilho);
+    width: 90vw;
+    height: 90vw;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+/* --- ESTILO DEFINITIVO DOS CONTROLES --- */
+.controls {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 70px 70px 70px;
+    grid-template-rows: 70px 70px 70px;
+    grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+}
+
+.controls button {
+    width: 65px;
+    height: 65px;
+    margin: 0;
+    background-color: transparent;
+    color: var(--cor-principal);
+    border: 2px solid var(--cor-principal);
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.controls button:hover {
+    background-color: var(--cor-principal);
+    color: var(--cor-fundo);
+    box-shadow: 0 0 10px var(--cor-brilho);
+}
+
+.controls button:active {
+    transform: scale(0.95);
+}
+
+#btn-up { grid-area: up; }
+#btn-down { grid-area: down; }
+#btn-left { grid-area: left; }
+#btn-right { grid-area: right; }
+/* --- FIM DOS ESTILOS DE CONTROLE --- */
+
+#game-over-screen {
+    position: absolute;
+    background-color: rgba(22, 27, 34, 0.95);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--cor-principal);
+    box-shadow: 0 0 20px var(--cor-brilho);
+    transition: opacity 0.5s, transform 0.5s;
+    transform: scale(1);
+}
+
+#game-over-screen.hidden {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+#game-over-screen h2 {
+    color: var(--cor-principal);
+}
+
+#restart-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: var(--cor-fundo);
+    background-color: var(--cor-principal);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+#restart-button:hover {
+    transform: scale(1.05);
+}
